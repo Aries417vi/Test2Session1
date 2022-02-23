@@ -1,1 +1,106 @@
+ gcc -g p4original.c;./a.out
+enter nth value:6
+the 6 element in fibonacci series is 5 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x83b: file p4original.c, line 35.
+(gdb) r
+Starting program: /home/runner/Test2Session1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p4original.c:35
+35    n=input();
+(gdb) s
+input () at p4original.c:4
+4   {
+(gdb) n
+6     printf("enter nth value:");
+(gdb) n
+7     scanf("%d",&n);
+(gdb) n
+enter nth value:6
+8     return n;
+(gdb) n
+9   }
+(gdb) n
+main () at p4original.c:36
+36    c=find_fibo(n);
+(gdb) s
+find_fibo (n=6) at p4original.c:12
+12    int a=0,b=1,i,c;
+(gdb) n
+14    for(i=2;i<n;i++)
+(gdb) n
+16        c=a+b;
+(gdb) n
+17        a=b;
+(gdb) n
+18        b=c;
+(gdb) n
+14    for(i=2;i<n;i++)
+(gdb) n
+16        c=a+b;
+(gdb) n
+17        a=b;
+(gdb) n
+18        b=c;
+(gdb) n
+14    for(i=2;i<n;i++)
+(gdb) n
+16        c=a+b;
+(gdb) n
+17        a=b;
+(gdb) n
+18        b=c;
+(gdb) n
+14    for(i=2;i<n;i++)
+(gdb) n
+16        c=a+b;
+(gdb) n
+17        a=b;
+(gdb) n
+18        b=c;
+(gdb) n
+14    for(i=2;i<n;i++)
+(gdb) n
+20    return c;
+(gdb) n
+21  }
+(gdb) n
+main () at p4original.c:37
+37    output(n,c);
+(gdb) s
+output (n=6, c=5) at p4original.c:24
+24    int a=0,b=1;
+(gdb) n
+25      if(n==1)
+(gdb) n
+27    else if(n==2)
+(gdb) n
+30    printf("the %d element in fibonacci series is %d",n,c);
+(gdb) n
+31  }
+(gdb) n
+main () at p4original.c:38
+38    return 0;
+(gdb) s
+39    }(gdb) c
+Continuing.
+the 6 element in fibonacci series is 5[Inferior 1 (process 943) exited normally]
+(gdb) q
+ 
