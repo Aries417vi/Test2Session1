@@ -1,9 +1,87 @@
  gcc -g p2original.c;./a.out
-enter the three points of the tringle:4
+enter the three points of the tringle:5
+6
 5
-6
-4
 8
-6
+4
+3
 yes 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x84b: file p2original.c, line 27.
+(gdb) r
+Starting program: /home/runner/Test2Session1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p2original.c:27
+27  {
+(gdb) n
+30    input_triangle(&x1,&y1,&x2,&y2,&x3,&y3);
+(gdb) s
+input_triangle (x1=0x7ffe16bc476c, 
+    y1=0x7ffe16bc4770, x2=0x7ffe16bc4774, 
+    y2=0x7ffe16bc4778, x3=0x7ffe16bc477c, 
+    y3=0x7ffe16bc4780) at p2original.c:5
+5     printf("enter the three points of the tringle:");
+(gdb) n
+6     scanf("%f%f%f%f%f%f",x1,y1,x2,y2,x3,y3);
+(gdb) n
+enter the three points of the tringle:4
+6
+8
+5
+7
+8
+7   }
+(gdb) n
+main () at p2original.c:31
+31    istriangle = is_triangle(x1,y1,x2,y2,x3,y3);
+(gdb) s
+is_triangle (x1=4, y1=6, x2=8, y2=5, x3=7, y3=8)
+    at p2original.c:12
+12    istriangle = x1 * (y2 - y3)
+(gdb) n
+13              + x2 * (y3 - y1)
+(gdb) n
+14              + x3 * (y1 - y2);
+(gdb) n
+12    istriangle = x1 * (y2 - y3)
+(gdb) n
+15    return istriangle;
+(gdb) n
+16  }
+(gdb) n
+main () at p2original.c:32
+32    output(x1,y1,x2,y2,x3,y3,istriangle);
+(gdb) s
+output (x1=4, y1=6, x2=8, y2=5, x3=7, y3=8, 
+    istriangle=11) at p2original.c:20
+20    if(istriangle==0)
+(gdb) n
+23    printf("yes");
+(gdb) n
+24  }
+(gdb) n
+main () at p2original.c:33
+33    return 0;
+(gdb) n
+34  }(gdb) c
+Continuing.
+yes[Inferior 1 (process 339) exited normally]
+(gdb) q
+ 
